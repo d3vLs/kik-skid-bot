@@ -77,8 +77,8 @@ class EchoBot(KikClientCallback):
         print("[+] {} is now {}typing in group {}".format(response.from_jid, "not " if not response.is_typing else "",
                                                           response.group_jid))
 
-    def on_roster_received(self, response: FetchRosterResponse):
-        print("[+] Chat partners:\n" + '\n'.join([str(member) for member in response.peers]))
+#    def on_roster_received(self, response: FetchRosterResponse):
+#       print("[+] Chat partners:\n" + '\n'.join([str(member) for member in response.peers]))
 
     def on_friend_attribution(self, response: chatting.IncomingFriendAttribution):
         print("[+] Friend attribution request from " + response.referrer_jid)
@@ -86,8 +86,8 @@ class EchoBot(KikClientCallback):
     def on_image_received(self, image_message: chatting.IncomingImageMessage):
         print("[+] Image message was received from {}".format(image_message.from_jid))
 
-    def on_peer_info_received(self, response: PeersInfoResponse):
-        print("[+] Peer info: " + str(response.users))
+#    def on_peer_info_received(self, response: PeersInfoResponse):
+#        print("[+] Peer info: " + str(response.users))
 
     def on_group_status_received(self, response: chatting.IncomingGroupStatus):
         print("[+] Status message in {}: {}".format(response.group_jid, response.status))
