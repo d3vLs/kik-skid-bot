@@ -33,7 +33,7 @@ class EchoBot(KikClientCallback):
 
 
     def __init__(self):
-        self.client = KikClient(self, USERNAME, PASSWORD)
+        self.client = KikClient(self, USERNAME, PASSWORD,kik_node="skid.bot_ct8")
 
     def on_authenticated(self):
         print("Now I'm Authenticated, let's request roster")
