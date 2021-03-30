@@ -19,11 +19,11 @@ PASSWORD = environ['PASSWORD']
 
 def main():
 
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
-    stream_handler = logging.StreamHandler(sys.stdout)
-    stream_handler.setFormatter(logging.Formatter(KikClient.log_format()))
-    logger.addHandler(stream_handler)
+#    logger = logging.getLogger()
+#    logger.setLevel(logging.INFO)
+#    stream_handler = logging.StreamHandler(sys.stdout)
+#    stream_handler.setFormatter(logging.Formatter(KikClient.log_format()))
+#    logger.addHandler(stream_handler)
 
     # create the bot
     bot = EchoBot()
