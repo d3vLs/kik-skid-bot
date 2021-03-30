@@ -2,6 +2,8 @@
 
 import logging
 import sys
+import os
+from os import environ
 
 import kik_unofficial.datatypes.xmpp.chatting as chatting
 from kik_unofficial.client import KikClient
@@ -11,8 +13,8 @@ from kik_unofficial.datatypes.xmpp.roster import FetchRosterResponse, PeersInfoR
 from kik_unofficial.datatypes.xmpp.sign_up import RegisterResponse, UsernameUniquenessResponse
 from kik_unofficial.datatypes.xmpp.login import LoginResponse, ConnectionFailedResponse
 
-username = sys.argv[1] if len(sys.argv) > 1 else input("Username: ")
-password = sys.argv[2] if len(sys.argv) > 2 else input('Password: ')
+USERNAME = environ['USERNAME']
+PASSWORD = environ['PASSWORD']
 
 
 def main():
@@ -28,10 +30,10 @@ def main():
 
 
 class EchoBot(KikClientCallback):
-    
+
 
     def __init__(self):
-        self.client = KikClient(self, username, password)
+        self.client = KikClient(self, USERNAME, PASSWORD)
 
     def on_authenticated(self):
         print("Now I'm Authenticated, let's request roster")
