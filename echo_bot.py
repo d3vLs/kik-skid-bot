@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-A Kik bot that just logs every event that it gets (new message, message read, etc.),
-and echos back whatever chat messages it receives.
-"""
 
 import logging
 import sys
@@ -67,6 +63,28 @@ class EchoBot(KikClientCallback):
                 self.client.ban_member_from_group(chat_message.group_jid, lastuser)
                 self.client.unban_member_from_group(chat_message.group_jid, lastuser)
                 self.client.ban_member_from_group(chat_message.group_jid, lastuser)
+
+        if chat_message.body == ("spamban") and wordMatch(sts,word="banned") == True:
+            for i in range(6):
+                self.client.ban_member_from_group(chat_message.group_jid, lastuser)
+                self.client.unban_member_from_group(chat_message.group_jid, lastuser)
+                self.client.ban_member_from_group(chat_message.group_jid, lastuser)
+
+        if chat_message.body == ("spamban") and wordMatch(sts,word="unbanned") == True:
+            for i in range(6):
+                self.client.ban_member_from_group(chat_message.group_jid, lastuser)
+                self.client.unban_member_from_group(chat_message.group_jid, lastuser)
+                self.client.ban_member_from_group(chat_message.group_jid, lastuser)
+
+        if chat_message.body == ("status"):
+            self.client.send_chat_message(chat_message.group_jid, "bitch stop that")
+
+        if chat_message.body == ("Status"):
+            self.client.send_chat_message(chat_message.group_jid, "What are you fucking illiterate its status not Status bitch all small just like ur brain")
+
+        if chat_message.body == ("Spamban"):
+            self.client.send_chat_message(chat_message.group_jid, "Listen pimple puss the fact you are allowed eyes is a crime itself its spamban not Spamban")
+
 
     def on_is_typing_event_received(self, response: chatting.IncomingIsTypingEvent):
         print("[+] {} is now {}typing.".format(response.from_jid, "not " if not response.is_typing else ""))
