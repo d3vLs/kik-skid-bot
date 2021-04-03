@@ -52,6 +52,7 @@ class EchoBot(KikClientCallback):
     def on_group_message_received(self, chat_message: chatting.IncomingGroupChatMessage):
         print("[+] '{}' from group ID {} says: {}".format(chat_message.from_jid, chat_message.group_jid, chat_message.body))
         def wordMatch(sentence,word):
+            global lis
             lis = sentence.split()
             if (lis.count(word) > 0):
                 return True
@@ -84,6 +85,14 @@ class EchoBot(KikClientCallback):
 
         if chat_message.body == ("Spamban"):
             self.client.send_chat_message(chat_message.group_jid, "Listen pimple puss the fact you are allowed eyes is a crime itself its spamban not Spamban")
+
+
+        if wordMatch(chat_message.body,word=".ban") == True:
+            user_jid = lis[1]
+            for i in range(6):
+                self.client.ban_member_from_group(chat_message.group_jid, user_jid)
+                self.client.unban_member_from_group(chat_message.group_jid, user_jid)
+                self.client.ban_member_from_group(chat_message.group_jid, user_jid)
 
 
     def on_is_typing_event_received(self, response: chatting.IncomingIsTypingEvent):
