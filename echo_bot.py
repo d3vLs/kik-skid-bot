@@ -95,6 +95,11 @@ class EchoBot(KikClientCallback):
                 self.client.ban_member_from_group(chat_message.group_jid, user_jid)
 
 
+        if wordMatch(chat_message.body,word=".leave") == True:
+            self.client.leave_group(chat_message.group_jid)
+            return
+
+
     def on_is_typing_event_received(self, response: chatting.IncomingIsTypingEvent):
         print("[+] {} is now {}typing.".format(response.from_jid, "not " if not response.is_typing else ""))
 
